@@ -17,6 +17,13 @@ export default function ListContainer() {
     $(".listContainer").each(function (index) {
       $(this).css("animation-delay", `${index / 2.5}s`);
     });
+
+    // lets remove delay after mounting
+    $(".listContainer:last-child").on("animationend", function () {
+      $(".listContainer").each(function () {
+        $(this).css("animation-delay", "0s");
+      });
+    });
   }, []);
 
   const todoRemover = (id, index) => {
@@ -43,14 +50,9 @@ export default function ListContainer() {
   const containerOnDragEnd = (ev, data) => {
     ev.preventDefault();
     listFilterd.splice(insertIndex, 0, data);
-
-    $(".listContainer").each(function () {
-      $(this).css("animation-delay", "0s");
-    });
-
     dispatch(setNewTodo(listFilterd));
   };
-  console.log(list);
+
   const ButtonGenerator = (data) => {
     const { done, id } = data;
 
