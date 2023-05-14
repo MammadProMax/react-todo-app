@@ -91,7 +91,7 @@ export default function ListContainer() {
     return (
       <div
         key={data.id}
-        className="listContainer py-3"
+        className="listContainer py-3 pl-1"
         draggable="true"
         data-index={index}
         onDragStart={() => containerPicked(data)}
