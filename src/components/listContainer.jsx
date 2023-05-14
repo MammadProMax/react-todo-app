@@ -51,6 +51,21 @@ export default function ListContainer() {
     ev.preventDefault();
     listFilterd.splice(insertIndex, 0, data);
     dispatch(setNewTodo(listFilterd));
+    $(".listContainer.dragto").removeClass("dragto");
+  };
+  const containerDragEnter = (ev) => {
+    let target = ev.currentTarget;
+    target.classList.add("dragto");
+  };
+  const containerDragLeave = (ev) => {
+    if (
+      ev.target.classList.contains("text-conatiner") ||
+      ev.target.classList.contains("listContainer-text")
+    )
+      return;
+
+    let target = ev.currentTarget;
+    target.classList.remove("dragto");
   };
 
   const ButtonGenerator = (data) => {
@@ -76,18 +91,20 @@ export default function ListContainer() {
     return (
       <div
         key={data.id}
-        className="listContainer"
+        className="listContainer py-3"
         draggable="true"
         data-index={index}
         onDragStart={() => containerPicked(data)}
         onDragOver={(ev) => containerOnDrag(ev.currentTarget.dataset.index)}
         onDragEnd={(ev) => containerOnDragEnd(ev, data)}
+        onDragEnter={(ev) => containerDragEnter(ev)}
+        onDragLeave={(ev) => containerDragLeave(ev)}
       >
-        <div className="flex pb-4 items-center ">
+        <div className="flex items-center text-conatiner ">
           <p
             className={
               !data.done
-                ? "mr-auto text-gray-700"
+                ? "mr-auto text-gray-700 listContainer-text "
                 : "mr-auto text-emerald-500 decoration-emerald-500 line-through"
             }
           >

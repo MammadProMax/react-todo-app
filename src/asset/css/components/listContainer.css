@@ -13,7 +13,9 @@
   background-color: rgba(15, 205, 252, 0.219);
   color: rgb(0, 132, 255);
 }
-
+.listContainer.dragto {
+  border-top: 2px rgba(54, 116, 250, 0.705) solid;
+}
 @keyframes listView {
   0% {
     opacity: 0;
