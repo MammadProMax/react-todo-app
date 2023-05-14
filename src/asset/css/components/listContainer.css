@@ -8,14 +8,27 @@
   animation: listDeview 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
     forwards;
 }
-
-.listContainer p::selection {
-  background-color: rgba(15, 205, 252, 0.219);
-  color: rgb(0, 132, 255);
+.listContainer-text {
+  position: absolute;
 }
-.listContainer.dragto {
-  border-left: 1px rgba(54, 116, 250, 0.705) solid;
+.listContainer-text .before {
+  transition: all 0.5s ease;
+  width: 0%;
+  height: 2px;
+  background-color: #869292a3;
+  display: inline-block;
+  border-radius: 9%;
+  position: absolute;
+  bottom: -1px;
 }
+.listContainer:active .listContainer-text .before {
+  width: 100%;
+}
+.listContainer.dragto .listContainer-text .before {
+  background-color: rgb(248, 50, 50);
+  width: 100%;
+}
+/* if we had (||) selector we did not need any js here but now check listContainer drag and drop methods */
 @keyframes listView {
   0% {
     opacity: 0;

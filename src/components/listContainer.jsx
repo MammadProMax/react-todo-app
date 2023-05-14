@@ -41,7 +41,7 @@ export default function ListContainer() {
   // drag and drop
   let listFilterd;
   let insertIndex;
-  const containerPicked = (item) => {
+  const containerPicked = (ev, item) => {
     listFilterd = list.filter((data) => data !== item);
   };
   const containerOnDrag = (target) => {
@@ -49,9 +49,11 @@ export default function ListContainer() {
   };
   const containerOnDragEnd = (ev, data) => {
     ev.preventDefault();
+
     listFilterd.splice(insertIndex, 0, data);
     dispatch(setNewTodo(listFilterd));
     $(".listContainer.dragto").removeClass("dragto");
+    $(".listContainer .listContainer-text .before").removeAttr("style");
   };
   const containerDragEnter = (ev) => {
     let target = ev.currentTarget;
@@ -94,20 +96,21 @@ export default function ListContainer() {
         className="listContainer py-3 pl-1"
         draggable="true"
         data-index={index}
-        onDragStart={() => containerPicked(data)}
+        onDragStart={(ev) => containerPicked(ev, data)}
         onDragOver={(ev) => containerOnDrag(ev.currentTarget.dataset.index)}
         onDragEnd={(ev) => containerOnDragEnd(ev, data)}
         onDragEnter={(ev) => containerDragEnter(ev)}
         onDragLeave={(ev) => containerDragLeave(ev)}
       >
-        <div className="flex items-center text-conatiner ">
+        <div className="flex items-center text-conatiner">
           <p
             className={
               !data.done
-                ? "mr-auto text-gray-700 listContainer-text "
-                : "mr-auto text-emerald-500 decoration-emerald-500 line-through"
+                ? "mr-auto text-gray-700 listContainer-text relative "
+                : "mr-auto text-emerald-500 decoration-emerald-500 line-through listContainer-text relative"
             }
           >
+            <span className="before"></span>
             {data.text}
           </p>
 
