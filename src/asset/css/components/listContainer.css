@@ -1,9 +1,13 @@
 .listContainer {
+  transition: background-color 0.2s ease;
+  border-radius: 12px;
   opacity: 0;
   animation: listView 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
     forwards;
 }
-
+.listContainer:hover {
+  background-color: #d0d6d670;
+}
 .listContainer.deactive {
   animation: listDeview 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
     forwards;
