@@ -6,7 +6,11 @@
     forwards;
 }
 .listContainer:hover {
-  background-color: #d0d6d670;
+  background: linear-gradient(
+    0deg,
+    rgba(98, 137, 211, 0.144) 0%,
+    rgba(0, 0, 0, 0) 80%
+  );
 }
 .listContainer.deactive {
   animation: listDeview 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
@@ -25,9 +29,9 @@
   position: absolute;
   bottom: -1px;
 }
-.listContainer:active .listContainer-text .before {
+/* .listContainer:active .listContainer-text .before {
   width: 100%;
-}
+} */
 .listContainer.dragto .listContainer-text .before {
   background-color: rgb(248, 50, 50);
   width: 100%;
