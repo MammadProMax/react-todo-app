@@ -1,3 +1,3 @@
 here is a todo list mini project
 
-and a this line is for testing repository
+and this line is for testing repository
