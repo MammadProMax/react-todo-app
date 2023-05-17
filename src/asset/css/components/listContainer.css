@@ -6,7 +6,8 @@
     forwards;
 }
 .listContainer.deactive {
-  animation-direction: alternate-reverse;
+  animation: listDeview 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
+    forwards;
 }
 .listContainer-text {
   position: absolute;
@@ -42,7 +43,7 @@
     opacity: 1;
   }
 }
-/* 
+
 @keyframes listDeview {
   0% {
     opacity: 1;
@@ -52,4 +53,4 @@
     opacity: 0;
     transform: translateX(-50px);
   }
-} */
+}
