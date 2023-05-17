@@ -5,7 +5,6 @@
   animation: listView 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
     forwards;
 }
-
 .listContainer.deactive {
   animation: listDeview 0.5s cubic-bezier(0.25, 0.35, 0.42, 1.01) 1 alternate
     forwards;
