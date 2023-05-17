@@ -19,24 +19,28 @@ export default function ListContainer() {
       $(this).css("animation-delay", `${index / 2.5}s`);
     });
 
-    // lets remove delay after mounting
+    // lets remove animation delay after mounting
     $(".listContainer:last-child").on("animationend", function () {
       $(".listContainer").each(function () {
-        $(this).css("animation-delay", "0s");
+        $(this).removeAttr("style");
       });
     });
   }, []);
 
   // drag and drop
+
   let listFilterd;
   let insertIndex;
+
   const containerPicked = (ev, item) => {
     listFilterd = list.filter((data) => data !== item);
   };
+
   const containerOnDrag = (ev, target) => {
     ev.preventDefault(); // cursor changes to draggable
     insertIndex = target;
   };
+
   const containerOnDragEnd = (ev, data) => {
     ev.preventDefault();
 
@@ -45,11 +49,13 @@ export default function ListContainer() {
     $(".listContainer.dragto").removeClass("dragto");
     $(".listContainer .listContainer-text .before").removeAttr("style");
   };
+
   const containerDragEnter = (ev) => {
     ev.preventDefault(); // cursor changes to draggable
     let target = ev.currentTarget;
     target.classList.add("dragto");
   };
+
   const containerDragLeave = (ev) => {
     ev.preventDefault(); // cursor changes to draggable
     if (
