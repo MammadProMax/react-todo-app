@@ -44,7 +44,8 @@ export default function ListContainer() {
   const containerPicked = (ev, item) => {
     listFilterd = list.filter((data) => data !== item);
   };
-  const containerOnDrag = (target) => {
+  const containerOnDrag = (ev, target) => {
+    ev.preventDefault(); // cursor changes to draggable
     insertIndex = target;
   };
   const containerOnDragEnd = (ev, data) => {
@@ -56,10 +57,12 @@ export default function ListContainer() {
     $(".listContainer .listContainer-text .before").removeAttr("style");
   };
   const containerDragEnter = (ev) => {
+    ev.preventDefault(); // cursor changes to draggable
     let target = ev.currentTarget;
     target.classList.add("dragto");
   };
   const containerDragLeave = (ev) => {
+    ev.preventDefault(); // cursor changes to draggable
     if (
       ev.target.classList.contains("text-conatiner") ||
       ev.target.classList.contains("listContainer-text")
@@ -97,7 +100,7 @@ export default function ListContainer() {
         draggable="true"
         data-index={index}
         onDragStart={(ev) => containerPicked(ev, data)}
-        onDragOver={(ev) => containerOnDrag(ev.currentTarget.dataset.index)}
+        onDragOver={(ev) => containerOnDrag(ev, ev.currentTarget.dataset.index)}
         onDragEnd={(ev) => containerOnDragEnd(ev, data)}
         onDragEnter={(ev) => containerDragEnter(ev)}
         onDragLeave={(ev) => containerDragLeave(ev)}
