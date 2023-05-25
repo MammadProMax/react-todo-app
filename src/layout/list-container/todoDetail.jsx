@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { removeTodo, todosDone } from "../../app/slices/todoSlice";
 import $ from "jquery";
 import PropTypes from "prop-types";
+import { memo } from "react";
 
 function TodoDetail({ data, index }) {
   const dispatch = useDispatch();
@@ -68,4 +69,4 @@ TodoDetail.propTypes = {
   index: PropTypes.number,
 };
 
-export default TodoDetail;
+export default memo(TodoDetail);

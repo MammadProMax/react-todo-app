@@ -1,5 +1,8 @@
+import React, { Suspense } from "react";
+
 import TodoForm from "./components/TodoForm";
-import ListContainer from "./components/listContainer";
+
+const ListContainer = React.lazy(() => import("./components/listContainer"));
 
 function App() {
   return (
@@ -10,7 +13,9 @@ function App() {
             <h1 className="text-gray-700 text-3xl font-bold pl-1">Todo List</h1>
             <TodoForm />
           </div>
-          <ListContainer />
+          <Suspense fallback={<p>loading ...</p>}>
+            <ListContainer />
+          </Suspense>
         </div>
       </div>
     </>

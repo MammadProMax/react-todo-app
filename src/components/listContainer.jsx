@@ -32,7 +32,7 @@ export default function ListContainer() {
   let listFilterd;
   let insertIndex;
 
-  const containerPicked = (ev, item) => {
+  const containerPicked = (item) => {
     listFilterd = list.filter((data) => data !== item);
   };
 
@@ -75,7 +75,7 @@ export default function ListContainer() {
         className="listContainer py-3 px-2"
         draggable="true"
         data-index={index}
-        onDragStart={(ev) => containerPicked(ev, data)}
+        onDragStart={() => containerPicked(data)}
         onDragOver={(ev) => containerOnDrag(ev, ev.currentTarget.dataset.index)}
         onDragEnd={(ev) => containerOnDragEnd(ev, data)}
         onDragEnter={(ev) => containerDragEnter(ev)}
