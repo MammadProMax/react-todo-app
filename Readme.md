@@ -8,3 +8,5 @@ work sample
 - React redux @1.9.5
 - redux-persist @6.0.0
 - jquery @3.6.4
+
+link https://mammadpromax.github.io/react-todo-app/
